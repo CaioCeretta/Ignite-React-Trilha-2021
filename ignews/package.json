@@ -19,7 +19,7 @@
     "react-dom": "18.1.0",
     "react-icons": "^4.2.0",
     "sass": "^1.32.8",
-    "stripe": "8.139.0"
+    "stripe": "^11.16.0"
   },
   "devDependencies": {
     "@types/next-auth": "3.7.1",

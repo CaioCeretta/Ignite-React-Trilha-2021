@@ -15,7 +15,6 @@ interface IHomeProps {
 import styles from './home.module.scss';
 
 export default function Home({product }: IHomeProps) {
-  console.log(product)
 
   return (
     <>
@@ -42,6 +41,7 @@ export default function Home({product }: IHomeProps) {
 export const getStaticProps: GetStaticProps = async () => {
 
   const price = await stripe.prices.retrieve('price_1Mnsq2ALOKh383KJHQEPbDky')
+
 
   const product = {
     priceId: price.id,

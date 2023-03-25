@@ -19,7 +19,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const session = await getSession({ req });
 
-    console.log(session.user.email)
 
     const user = await fauna.query<User>(
       q.Get(
@@ -30,7 +29,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       )
     )
 
+
     let customerId = user.data.stripe_customer_id;
+
 
     if (!customerId) {
 
@@ -41,7 +42,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 
 
-      await fauna.query(
+      const fq = await fauna.query(
         q.Update(
           q.Ref(q.Collection('users'), user.ref.id),
           {
@@ -70,6 +71,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       success_url: process.env.STRIPE_SUCCESS_URL,
       cancel_url: process.env.STRIPE_CANCEL_URL
     })
+
 
     return res.status(200).json({ sessionId: stripeCheckoutSession.id })
   } else {
