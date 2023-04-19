@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "polished": "^4.2.2",
+    "react-modal": "^3.16.1"
+  },
+  "devDependencies": {
+    "@types/react-modal": "^3.13.1"
+  }
+}
